@@ -8,14 +8,16 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CapsuleCollider))]
 public class PlayerController : MonoBehaviour
 {
+    [Header("Movement")]
+
     [SerializeField]
     private float movementSpeed = 4f;
 
     [SerializeField]
     private float rotationSpeed = 360f;
 
-    [SerializeField]
-    private GameObject snowballPrefab;
+    [Space]
+    [Header("Camera")]
     
     [SerializeField]
     private GameObject followCamera;
@@ -23,6 +25,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject aimCamera;
 
+    [Space]
+    [Header("Throwing")]
+
+    [SerializeField]
+    private Projectile snowballPrefab;
+
+    [SerializeField]
+    private GameObject snowballEmitter;
+    
     [SerializeField]
     private GameObject crossair;
 
@@ -105,10 +116,8 @@ public class PlayerController : MonoBehaviour
     {
         if (!_isAiming || !_isThrowing || _isOnCooldown) return;
         var position = _transform.position;
-        // Should probably have a emitter transform position
-        var projectileSpawn = new Vector3(position.x, _transform.localScale.y, position.z) + _transform.forward;
-        var instance = Instantiate(snowballPrefab, projectileSpawn, _transform.rotation);
-        instance.GetComponent<Projectile>().Fire();
+        var instance = Instantiate(snowballPrefab, snowballEmitter.transform.position, _transform.rotation);
+        instance.Fire();
         StartCoroutine(CooldownCounter());
     }
 

@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 15559cda92c47ca4596a8277e8a90966, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -549,6 +549,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -656,6 +657,15 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!45 &963194230
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &1079289363
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,82 +1108,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1528964869254007594, guid: a026d68b5eca7fb45aacd87b3c53eb8e, type: 3}
-      propertyPath: ShapeModule.type
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528964869254007594, guid: a026d68b5eca7fb45aacd87b3c53eb8e, type: 3}
-      propertyPath: ShapeModule.angle
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528964869254007594, guid: a026d68b5eca7fb45aacd87b3c53eb8e, type: 3}
-      propertyPath: ShapeModule.arc.mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528964869254007594, guid: a026d68b5eca7fb45aacd87b3c53eb8e, type: 3}
-      propertyPath: VelocityModule.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528964869254007594, guid: a026d68b5eca7fb45aacd87b3c53eb8e, type: 3}
-      propertyPath: VelocityModule.x.scalar
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528964869254007594, guid: a026d68b5eca7fb45aacd87b3c53eb8e, type: 3}
-      propertyPath: VelocityModule.y.scalar
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528964869254007594, guid: a026d68b5eca7fb45aacd87b3c53eb8e, type: 3}
-      propertyPath: VelocityModule.z.scalar
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528964869254007594, guid: a026d68b5eca7fb45aacd87b3c53eb8e, type: 3}
-      propertyPath: ShapeModule.m_Rotation.x
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528964869254007594, guid: a026d68b5eca7fb45aacd87b3c53eb8e, type: 3}
-      propertyPath: ShapeModule.m_Rotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528964869254007594, guid: a026d68b5eca7fb45aacd87b3c53eb8e, type: 3}
-      propertyPath: ShapeModule.radius.value
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528964869254007594, guid: a026d68b5eca7fb45aacd87b3c53eb8e, type: 3}
-      propertyPath: VelocityModule.x.minScalar
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528964869254007594, guid: a026d68b5eca7fb45aacd87b3c53eb8e, type: 3}
-      propertyPath: VelocityModule.z.minScalar
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528964869254007594, guid: a026d68b5eca7fb45aacd87b3c53eb8e, type: 3}
-      propertyPath: ShapeModule.radiusThickness
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528964869254007594, guid: a026d68b5eca7fb45aacd87b3c53eb8e, type: 3}
-      propertyPath: VelocityModule.x.minMaxState
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528964869254007594, guid: a026d68b5eca7fb45aacd87b3c53eb8e, type: 3}
-      propertyPath: VelocityModule.y.minMaxState
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528964869254007594, guid: a026d68b5eca7fb45aacd87b3c53eb8e, type: 3}
-      propertyPath: VelocityModule.z.minMaxState
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528964869254007594, guid: a026d68b5eca7fb45aacd87b3c53eb8e, type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528964869254007594, guid: a026d68b5eca7fb45aacd87b3c53eb8e, type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528964869254007594, guid: a026d68b5eca7fb45aacd87b3c53eb8e, type: 3}
-      propertyPath: InitialModule.gravityModifier.scalar
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 5816838414129515682, guid: a026d68b5eca7fb45aacd87b3c53eb8e, type: 3}
       propertyPath: m_Name
       value: Snow Particles

@@ -272,7 +272,7 @@
                 },
                 {
                     "name": "Cancel",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "67b06f03-b1cb-4bc6-9d0c-d4ed28fd6d94",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -331,6 +331,14 @@
                     "type": "PassThrough",
                     "id": "b338fe96-4c7d-41c4-b082-e74dd9567c5d",
                     "expectedControlType": "Quaternion",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Key",
+                    "type": "Button",
+                    "id": "29083c0f-20af-43fa-a460-a07ca907a390",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 }
@@ -751,6 +759,17 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "TrackedDeviceOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "286752f1-505c-4942-a144-03b74c98f4ff",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Key",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -115,12 +115,12 @@ public class PlayerController : MonoBehaviour
     private void ProcessThrowing()
     {
         if (!_isAiming || !_isThrowing || _isOnCooldown) return;
-        var position = _transform.position;
         var instance = Instantiate(snowballPrefab, snowballEmitter.transform.position, _transform.rotation);
         instance.Fire();
         StartCoroutine(CooldownCounter());
     }
 
+    // TODO Use mouse position coupled with screen size to determine where on the screen we are aiming - we don't really care about where in the world
     private Vector3 GetMouseWorldPosition()
     {
         var position = _transform.position;

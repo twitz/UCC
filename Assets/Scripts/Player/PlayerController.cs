@@ -1,8 +1,9 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Quaternion = UnityEngine.Quaternion;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(CapsuleCollider))]
@@ -16,8 +17,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float rotationSpeed = 360f;
 
+    [SerializeField]
+    [Range(0.1f, 1f)] [Tooltip("Rotation speed multiplier when aiming")]
+    private float aimingRotationMultiplier = 0.4f;
+
     [Space]
     [Header("Camera")]
+
+    [SerializeField]
+    private Camera mainCamera;
     
     [SerializeField]
     private GameObject followCamera;
@@ -25,6 +33,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject aimCamera;
 
+    [Range(10, 200)]
+    [SerializeField]
+    private float aimDistance = 100f;
+    
     [Space]
     [Header("Throwing")]
 
@@ -44,13 +56,14 @@ public class PlayerController : MonoBehaviour
     private float throwCooldown = 2;
     
     private Transform _transform;
-    private Camera _camera;
 
     private bool _isAiming;
     private bool _isThrowing;
     private bool _isOnCooldown;
     private Vector2 _movementInput;
     private Vector2 _mousePosition;
+
+    private float RotationMultiplier => _isAiming ? aimingRotationMultiplier : 1f;
 
 #if UNITY_EDITOR
     private Vector3 _lookAtLocation;
@@ -59,7 +72,6 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _transform = transform;
-        _camera = Camera.main;
         aimCamera.SetActive(false);
         followCamera.SetActive(true);
     }
@@ -107,8 +119,9 @@ public class PlayerController : MonoBehaviour
     private void ProcessRotation()
     {
         var targetLocation = GetMouseWorldPosition() - _transform.position;
+        targetLocation.y = 0;
         var targetRotation = Quaternion.LookRotation(targetLocation.normalized);
-        var ratio = Time.deltaTime * (Mathf.Deg2Rad * rotationSpeed);
+        var ratio = Time.deltaTime * (Mathf.Deg2Rad * rotationSpeed * RotationMultiplier);
         _transform.rotation = Quaternion.Slerp(_transform.rotation, targetRotation, ratio);
     }
 
@@ -123,22 +136,12 @@ public class PlayerController : MonoBehaviour
     // TODO Use mouse position coupled with screen size to determine where on the screen we are aiming - we don't really care about where in the world
     private Vector3 GetMouseWorldPosition()
     {
-        var position = _transform.position;
-        var planeHitLocation = position + (_transform.forward * 100f);
-        var projectionPlane = new Plane(Vector3.up, position);
-        var projectionRay = _camera.ScreenPointToRay(_mousePosition);
-
-        if (projectionPlane.Raycast(projectionRay, out var distance))
-        {
-            planeHitLocation = projectionRay.GetPoint(distance);
-        }
-
+        var mouseWorldPosition = mainCamera.ScreenToWorldPoint(new Vector3(_mousePosition.x, _mousePosition.y, aimDistance));
 #if UNITY_EDITOR
         //Cache hit location as LookAtLocation for debug purposes
-        _lookAtLocation = planeHitLocation;
+        _lookAtLocation = mouseWorldPosition;
 #endif
-
-        return planeHitLocation;
+        return mouseWorldPosition;
     }
 
     public void OnMovementInput(InputAction.CallbackContext context)
@@ -175,7 +178,6 @@ public class PlayerController : MonoBehaviour
         // Draw a yellow sphere at the transform's position
         Gizmos.color = Color.yellow;
         Gizmos.DrawSphere(_lookAtLocation, .5f);
-
 #endif
     }
 }

@@ -1057,11 +1057,11 @@ PrefabInstance:
       objectReference: {fileID: 1099315395}
     - target: {fileID: 312608882178829592, guid: 2c9b47bdd173fe448a174d6f54fad6ba, type: 3}
       propertyPath: rotationSpeed
-      value: 200
+      value: 360
       objectReference: {fileID: 0}
     - target: {fileID: 312608882178829592, guid: 2c9b47bdd173fe448a174d6f54fad6ba, type: 3}
       propertyPath: aimingRotationMultiplier
-      value: 0.4
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 6316505195561082232, guid: 2c9b47bdd173fe448a174d6f54fad6ba, type: 3}
       propertyPath: m_Name

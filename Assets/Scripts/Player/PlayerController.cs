@@ -63,6 +63,11 @@ public class PlayerController : MonoBehaviour
     private Vector2 _movementInput;
     private Vector2 _mousePosition;
 
+    private readonly Vector2 _screenMidPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
+
+    private Vector3 AimPoint =>
+        mainCamera.ScreenToWorldPoint(new Vector3(_screenMidPoint.x, _screenMidPoint.y, aimDistance)).normalized;
+
     private float RotationMultiplier => _isAiming ? aimingRotationMultiplier : 1f;
 
 #if UNITY_EDITOR
